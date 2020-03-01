@@ -2,22 +2,10 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const path = require('path');
-const mongoose  = require('mongoose');
 
 const config = require('./config.json');
 
-
-const apiProductsRouter = require('./api/routes/products');
-const apiOrdersRouter = require('./api/routes/orders');
 const apiFilesRouter = require('./api/routes/files');
-const apiUserRouter = require('./api/routes/users');
-
-const json = express.json();
-
-mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process.env.MONGO_ATLAS_PW + '@cluster0-wuogr.gcp.mongodb.net/test?retryWrites=true&w=majority', { 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
 
 app.set('views', path.join(__dirname, 'views'))
 
@@ -29,13 +17,9 @@ app.get('/', (req, res) => {
     // res.render('index');
 });
 
-app.use(json);
 
 // Routers which shoud handle request
-app.use('/products', apiProductsRouter);
-app.use('/orders', apiOrdersRouter);
 app.use('/files', apiFilesRouter);
-app.use('/user', apiUserRouter);
 
 app.use((req, res, next) => {
     let err = new Error('The URL ' + req.originalUrl + " not found");
