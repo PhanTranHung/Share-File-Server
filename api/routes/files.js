@@ -1,15 +1,14 @@
 const express = require('express');
 const route = express.Router();
-const path = require("path")
-const fs = require("fs")
- 
-const directoryPath = path.join('/media/odinson/White_Space')
+const path = require("path");
+const fs = require("fs");
+const config = require('../../config.json');
 
 
 async function convertToHTML(pathToForder, res){
     let html = "";
 
-    let files = fs.readdirSync(path.join(directoryPath, pathToForder));
+    let files = fs.readdirSync(path.join(config.shared_folder, pathToForder));
 
     files.forEach(function(file) {
         let path1 = path.join('/files', pathToForder, file);
