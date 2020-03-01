@@ -1,0 +1,8 @@
+{
+    "env": {
+        "PORT": 8088,
+        "MONGO_ATLAS_USER": "user1",
+        "MONGO_ATLAS_PW": "user1",
+        "JWT_KEY": "secret"
+    }
+}
