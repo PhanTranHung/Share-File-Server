@@ -9,7 +9,7 @@ const directoryPath = path.join('/media/odinson/White_Space')
 async function convertToHTML(pathToForder, res){
     let html = "";
 
-    let files = fs.readdirSync(path.join(directoryPaeth, pathToForder));
+    let files = fs.readdirSync(path.join(directoryPath, pathToForder));
 
     files.forEach(function(file) {
         let path1 = path.join('/files', pathToForder, file);

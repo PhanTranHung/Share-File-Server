@@ -4,6 +4,8 @@ const morgan = require('morgan');
 const path = require('path');
 const mongoose  = require('mongoose');
 
+const config = require('./config.json');
+
 
 const apiProductsRouter = require('./api/routes/products');
 const apiOrdersRouter = require('./api/routes/orders');
@@ -19,10 +21,8 @@ mongoose.connect('mongodb+srv://' + process.env.MONGO_ATLAS_USER + ':' + process
 
 app.set('views', path.join(__dirname, 'views'))
 
-const parentForder = '/media/odinson/White_Space';
-
 app.use(morgan('dev'));
-app.use('/files', express.static(parentForder))
+app.use('/files', express.static(config.shared_folder))
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "views/index.html"));
